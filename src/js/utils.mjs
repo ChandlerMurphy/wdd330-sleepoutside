@@ -40,3 +40,11 @@ export function renderListwithTemplate(templateFn, parentElement, list, position
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+export function updateCartCount() {
+  const cart = getLocalStorage("so-cart") || [];
+  const cartCount = cart.length;
+
+  const cartCountElement = document.querySelector(".cart_count");
+  cartCountElement.textContent = cartCount > 0 ? cartCount : "0";
+}
