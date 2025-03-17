@@ -96,6 +96,31 @@ button {
 }
 /* End utility classes */
 
+/* Product Icon styles */
+.product-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+}
+
+.product-icons li img {
+  width: 100px;
+  height: auto;
+}
+
+.product-icons li h2 {
+  color: black;
+}
+
+.product-icons li a {
+  color: black;
+  text-decoration: none;
+}
+
+
 /* Cart icon styles */
 .cart {
   padding-top: 1em;
@@ -154,7 +179,9 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
 /* Styles for product lists */
+
 .product-card {
   flex: 1 1 45%;
   margin: 0.25em;
