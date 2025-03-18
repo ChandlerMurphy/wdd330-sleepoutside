@@ -52,3 +52,37 @@ export function updateCartCount() {
 export function loadHeaderFooter() {
   
 }
+
+export function updateBreadcrumb() {
+  const breadcrumbContainer = document.getElementById("breadcrumb-container");
+  const breadcrumbContent = document.getElementById("breadcrumb-content");
+
+  const path = window.location.pathname;
+  const urlParams = new URLSearchParams(window.location.search); // Parse the query string
+
+  const category = urlParams.get("category"); // Extract the 'category' query parameter from the URL
+  const productId = urlParams.get("product"); // Extract the 'product' query parameter from the URL
+
+  if (path === "/" || path === "/index.html") {
+    // Home page: don't show breadcrumb
+    breadcrumbContainer.style.display = "none";
+  } else if (path.includes("product_listing") && category) {
+    // Product list page with category query (e.g., ?category=tents)
+    const productCount = countProductCards(); // Count all product cards on the page
+    console.log("Product Count:", productCount); // Debugging output
+    breadcrumbContent.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)} (${productCount} items)`; // Display category and product count
+    breadcrumbContainer.style.display = "block";
+  } else if (path.includes("product_pages") && productId) {
+    // Individual product page with product query (e.g., ?product=123)
+    breadcrumbContent.textContent = `Product - ${productId}`;
+    breadcrumbContainer.style.display = "block";
+  }
+
+  // Function to count product cards (elements with the class 'product-card')
+  function countProductCards() {
+    const productCards = document.querySelectorAll(".product-card"); // Select all elements with class 'product-card'
+    return productCards.length; // Return the number of product cards
+  }
+}
+
+

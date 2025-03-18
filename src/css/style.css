@@ -120,6 +120,27 @@ button {
   text-decoration: none;
 }
 
+/* Bread Crumb styles */
+.breadcrumb-container {
+  margin: 20px 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.breadcrumb-container a {
+  text-decoration: none;
+  color: #0066cc;
+}
+
+.breadcrumb-container a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-container span {
+  font-weight: bold;
+}
+
+
 
 /* Cart icon styles */
 .cart {
