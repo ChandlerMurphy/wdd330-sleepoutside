@@ -20,14 +20,11 @@ export default class ProductData {
       throw new Error(`Error fetching products for category: ${category}`);
     }
     const data = await convertToJson(response);
-    console.log("Fetched Products: ", data)
     return data.Result;
   }
   async findProductById(id) {
     const response = await fetch(`${baseURL}product/${id}`);
     const data = await convertToJson(response);
     return data.Result;
-    // const products = await this.getData();
-    // return products.find((item) => item.Id === id);
   }
 }
