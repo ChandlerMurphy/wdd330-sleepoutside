@@ -48,3 +48,7 @@ export function updateCartCount() {
   const cartCountElement = document.querySelector(".cart_count");
   cartCountElement.textContent = cartCount > 0 ? cartCount : "0";
 }
+
+export function loadHeaderFooter() {
+  
+}
