@@ -13,4 +13,4 @@ productList.init().then(() => {
     updateBreadcrumb();  // Ensure breadcrumb update happens after products are rendered
 });
 
-// updateCartCount();
+updateCartCount();

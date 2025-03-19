@@ -41,16 +41,35 @@ export function renderListwithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  if (callback){
+    callback(data);
+  }
+}
+
+async function loadTemplate(url) {
+  const response = await fetch(url);
+  const template = await response.text();
+  return template;
+}
+
+export async function loadHeaderFooter() {
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const headerElement = document.querySelector("#main-header");
+  renderWithTemplate(headerTemplate, headerElement);
+
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+  const footerElement = document.querySelector("#main-footer");
+  renderWithTemplate(footerTemplate, footerElement);
+}
+
 export function updateCartCount() {
   const cart = getLocalStorage("so-cart") || [];
   const cartCount = cart.length;
 
   const cartCountElement = document.querySelector(".cart_count");
   cartCountElement.textContent = cartCount > 0 ? cartCount : "0";
-}
-
-export function loadHeaderFooter() {
-  
 }
 
 export function updateBreadcrumb() {
