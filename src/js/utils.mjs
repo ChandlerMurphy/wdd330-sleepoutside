@@ -72,10 +72,6 @@ export function updateCartCount() {
   cartCountElement.textContent = cartCount > 0 ? cartCount : "0";
 }
 
-export function loadHeaderFooter() {
-  
-}
-
 export function updateBreadcrumb() {
   const breadcrumbContainer = document.getElementById("breadcrumb-container");
   const breadcrumbContent = document.getElementById("breadcrumb-content");
