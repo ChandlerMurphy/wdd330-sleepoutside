@@ -14,6 +14,10 @@ export default class ProductDetails {
         // the product details are needed before rendering the HTML
         this.renderProductDetails("main");
 
+        // Event listenser to dynamically update image on window resize
+        window.addEventListener("resize", this.updateProductImage.bind(this));
+        this.updateProductImage();
+
         // once the HTML is rendered, add a listener to the Add to Cart button
         // Notice the .bind(this). This callback will not work if the bind(this) is missing. Review the readings from this week on 'this' to understand why.
         document.getElementById("addToCart");
@@ -31,6 +35,19 @@ export default class ProductDetails {
           productDetailsTemplate(this.product)
         );
     }
+    updateProductImage() {
+      const imageElement = document.getElementById("product-image");
+
+      if (window.innerWidth <= 100) {
+        imageElement.src = this.product.Images.PrimarySmall;
+      } else if (window.innerWidth <= 200) {
+        imageElement.src = this.product.Images.PrimaryMedium;
+      } else if (window.innerWidth <= 300) {
+        imageElement.src = this.product.Images.PrimaryLarge;
+      } else {
+        imageElement.src = this.product.Images.PrimaryExtraLarge;
+      }
+    }
 }
 
 
@@ -38,6 +55,7 @@ function productDetailsTemplate(product) {
   return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
+      id="product-image"
       class="divider"
       src="${product.Images.PrimaryLarge}"
       alt="${product.NameWithoutBrand}"
