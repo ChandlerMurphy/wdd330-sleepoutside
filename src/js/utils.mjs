@@ -22,17 +22,23 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-// Use those lines to create a new function in the utils.mjs file called getParam(param) that you can 
+// Use those lines to create a new function in the utils.mjs file called getParam(param) that you can
 // use to return a parameter from the URL when requested.
 
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get(param)
+  const product = urlParams.get(param);
   return product;
 }
 
-export function renderListwithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+export function renderListwithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
+) {
   const htmlStrings = list.map(templateFn);
   // if clear is true we need to clear out the contents of the parent.
   if (clear) {
@@ -43,7 +49,7 @@ export function renderListwithTemplate(templateFn, parentElement, list, position
 
 export function renderWithTemplate(template, parentElement, data, callback) {
   parentElement.innerHTML = template;
-  if (callback){
+  if (callback) {
     callback(data);
   }
 }
@@ -62,14 +68,17 @@ export async function loadHeaderFooter() {
   const footerTemplate = await loadTemplate("../partials/footer.html");
   const footerElement = document.querySelector("#main-footer");
   renderWithTemplate(footerTemplate, footerElement);
+  updateCartCount();
+  // updateBreadcrumb();
 }
 
 export function updateCartCount() {
   const cart = getLocalStorage("so-cart") || [];
   const cartCount = cart.length;
 
-  const cartCountElement = document.querySelector(".cart_count");
-  cartCountElement.textContent = cartCount > 0 ? cartCount : "0";
+  // console.log(document.querySelector("#cart-count-span"));
+  const cartCountElement = document.querySelector("#cart-count-span");
+  cartCountElement.textContent = cartCount || "0";
 }
 
 export function updateBreadcrumb() {
@@ -103,5 +112,3 @@ export function updateBreadcrumb() {
     return productCards.length; // Return the number of product cards
   }
 }
-
-

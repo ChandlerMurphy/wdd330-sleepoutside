@@ -1,4 +1,9 @@
-import { updateCartCount, loadHeaderFooter, getParam, updateBreadcrumb } from "./utils.mjs";
+import {
+  updateCartCount,
+  loadHeaderFooter,
+  getParam,
+  updateBreadcrumb,
+} from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 
@@ -10,7 +15,7 @@ const element = document.querySelector(".product-list");
 const productList = new ProductList(category, dataSource, element);
 
 productList.init().then(() => {
-    updateBreadcrumb();  // Ensure breadcrumb update happens after products are rendered
+  updateBreadcrumb(); // Ensure breadcrumb update happens after products are rendered
 });
 
-updateCartCount();
+// updateCartCount();

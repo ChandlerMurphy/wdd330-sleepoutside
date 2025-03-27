@@ -3,7 +3,7 @@ import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
 // renderCartContents();
-updateCartCount();
+// updateCartCount();
 
 const order = new CheckoutProcess("so-cart", ".checkout-summary");
 order.init();
