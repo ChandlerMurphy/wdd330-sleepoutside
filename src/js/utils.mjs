@@ -72,10 +72,38 @@ export async function loadHeaderFooter() {
   // updateBreadcrumb();
 }
 
+function animation() {
+  var id = null;
+  var isAnimating = false;
+  var elem = document.getElementById("icon-cart");
+  var pos = 35;
+  clearInterval(id);
+  id = setInterval(frame, 50);
+  function frame() {
+    if (isAnimating == true) {
+      pos--;
+      elem.style.height = pos + "px";
+      elem.style.width = pos + "px";
+      if (pos == 35) {
+        isAnimating = false;
+        clearInterval(id);
+        return;
+      }
+    } else {
+      pos++;
+      elem.style.height = pos + "px";
+      elem.style.width = pos + "px";
+      if (pos == 40) {
+        isAnimating = true;
+      }
+    }
+  }
+}
 export function updateCartCount() {
   const cart = getLocalStorage("so-cart") || [];
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
+  animation();
   const cartCountElement = document.querySelector("#cart-count-span");
   cartCountElement.textContent = cartCount || "0";
 }

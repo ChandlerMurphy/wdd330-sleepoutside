@@ -159,6 +159,8 @@ button {
 
 /* Cart icon styles */
 .cart {
+  width: 50px;
+  height: 50px;
   padding-top: 1em;
   position: relative;
   text-align: center;
@@ -166,11 +168,13 @@ button {
 }
 
 .cart a {
+  width: 100%;
+  height: 100%;
   text-decoration: none;
 }
 
 .cart svg {
-  width: 25px;
+  width: 35px;
 }
 
 .cart:hover svg {
@@ -180,7 +184,7 @@ button {
 .cart_count {
   position: relative;
   top: -40px;
-  right: -12px;
+  right: -25px;
   background-color: #f0a868;
   color: #525b0f;
   font-size: 12px;
@@ -191,6 +195,17 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Cart icon animation */
+
+#icon-cart-animate:hover {
+  transform: rotate(100deg);
+  transition: transform 1s ease-in-out;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  /* background-color: red; */
 }
 
 /* End cart icon styles */

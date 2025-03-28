@@ -76,4 +76,3 @@ document.querySelector(".product-list").addEventListener("click", (e) => {
 loadHeaderFooter();
 renderCartContents();
 setCartTotal();
-// updateCartCount();
