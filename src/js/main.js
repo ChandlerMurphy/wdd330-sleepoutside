@@ -14,5 +14,4 @@ const alerts = new Alert(".alert-list");
 loadHeaderFooter();
 productList.init();
 updateBreadcrumb();
-// updateCartCount();
 alerts.readAlerts();
