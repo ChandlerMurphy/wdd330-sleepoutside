@@ -74,9 +74,8 @@ export async function loadHeaderFooter() {
 
 export function updateCartCount() {
   const cart = getLocalStorage("so-cart") || [];
-  const cartCount = cart.length;
+  const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-  // console.log(document.querySelector("#cart-count-span"));
   const cartCountElement = document.querySelector("#cart-count-span");
   cartCountElement.textContent = cartCount || "0";
 }
