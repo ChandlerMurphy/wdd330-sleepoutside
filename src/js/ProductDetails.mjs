@@ -28,7 +28,21 @@ export default class ProductDetails {
   }
   addProductToCart() {
     let cartItems = getLocalStorage("so-cart") || [];
-    cartItems.push(this.product);
+    const ids = cartItems.map((item) => item.Id) || [];
+    if (!ids.includes(this.product.Id)) {
+      this.product.quantity = 1;
+      cartItems.push(this.product);
+      ids.push(this.product.Id);
+    } else if (ids.includes(this.product.Id)) {
+      cartItems.map((itemCart, index) => {
+        if (this.product.Id === itemCart.Id) {
+          cartItems[index].quantity++;
+          this.product.quantity = 1;
+          return;
+        }
+      });
+    }
+
     setLocalStorage("so-cart", cartItems);
 
     updateCartCount();
