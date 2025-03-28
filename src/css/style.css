@@ -337,3 +337,19 @@ footer {
 .hide {
   display: none;
 }
+
+/* Alert */
+.alert-list {
+  margin: 10px;
+}
+
+.alert {
+  align-self: center;
+  box-shadow: #0066cc;
+
+  width: 80%;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+}
