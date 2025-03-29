@@ -139,3 +139,33 @@ export function updateBreadcrumb() {
     return productCards.length; // Return the number of product cards
   }
 }
+
+export function alertMessage(message, scroll=true) {
+  // Alert
+  const alert = document.createElement('div');
+  alert.classList.add('alert');
+
+  // close alert
+  alert.innerHTML = `<p>${message}</p><span class="close">×</span>`;
+  
+  // ensure user sees alert
+  alert.addEventListener('click', function(e) {
+    if(e.target.innerText === '×') {
+      main.removeChild(this);
+    }
+  });
+ 
+  // Add alert to top of main
+  const main = document.querySelector('main');
+  main.prepend(alert);
+
+  if(scroll) window.scrollTo(0,0);
+
+  // remove alert after 7 seconds
+  setTimeout(function() {
+
+    if(alert.parentNode) {
+      main.removeChild(alert);
+    }
+  }, 7000);
+}

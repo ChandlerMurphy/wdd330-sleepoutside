@@ -16,5 +16,13 @@ document
 document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
   e.preventDefault();
 
+  const form = document.forms["checkout"];
+  
+  if (form.checkValidity()) {
+    order.checkout();
+  } else {
+    form.reportValidity
+  }
+
   order.checkout();
 });
