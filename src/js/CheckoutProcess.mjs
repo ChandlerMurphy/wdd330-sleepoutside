@@ -66,7 +66,7 @@ export default class CheckoutProcess {
           parseFloat(this.itemTotal) +
           parseFloat(this.tax) +
           parseFloat(this.shipping)
-        )
+        ).toFixed(2);
         // display the totals.
         this.displayOrderTotals();
       }
@@ -96,6 +96,12 @@ export default class CheckoutProcess {
         try {
           const response = await services.checkout(order);
           console.log(response);
+
+          // clear cart
+          localStorage.removeItem("so-cart");
+          //direct to success page
+          window.location.href = "/checkout/success.html";
+
         } catch (err) {
           console.log(err);
         }
