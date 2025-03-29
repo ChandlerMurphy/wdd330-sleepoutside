@@ -3,5 +3,10 @@
     "message": "Offers",
     "background": "#007bff",
     "color": "white"
+  },
+  {
+    "message": "Offers2",
+    "background": "#007bff",
+    "color": "white"
   }
 ]

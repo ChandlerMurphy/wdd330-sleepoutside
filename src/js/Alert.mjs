@@ -5,25 +5,35 @@ export default class Alert {
     this.selector = selector;
   }
   displayAlert(selector, alert) {
-    const p = document.createElement("p");
-    p.classList.add("alert");
-    p.style = `background-color: ${alert.background};
-    color:${alert.color}`;
-
-    p.textContent = alert.message;
-    selector.appendChild(p);
+    const div = document.createElement("div");
+    div.innerHTML = `<div class="alert-container" style="background-color: ${alert.background}; color:${alert.color}">
+    <p class="alert">\
+    ${alert.message}
+    </p>
+    <span class="delete-alert">❌</span>
+    </div>
+    `;
+    selector.appendChild(div);
+    div.addEventListener("click", (e) => {
+      if (e.target.classList.contains("delete-alert")) {
+        e.target.parentElement.remove();
+      }
+    });
   }
   clearAlert() {
     const alertElement = document.querySelector(this.selector);
     alertElement.innerHTML = "";
   }
-  readAlerts() {
-    const sect = document.createElement("section");
-    sect.classList.add("alert-list");
-    document.querySelector("main").prepend(sect);
+  readAlerts(sect) {
     alerts.forEach((alert) => {
       this.displayAlert(sect, alert);
     });
     console.log(alerts);
+  }
+  insertAlerts() {
+    const sect = document.createElement("section");
+    sect.classList.add("alert-list");
+    document.querySelector("main").prepend(sect);
+    this.readAlerts(sect);
   }
 }

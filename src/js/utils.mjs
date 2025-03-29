@@ -99,6 +99,7 @@ function animation() {
     }
   }
 }
+
 export function updateCartCount() {
   const cart = getLocalStorage("so-cart") || [];
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -106,6 +107,13 @@ export function updateCartCount() {
   animation();
   const cartCountElement = document.querySelector("#cart-count-span");
   cartCountElement.textContent = cartCount || "0";
+}
+
+export function clearCart() {
+  const cart = getLocalStorage("so-cart") || [];
+  cart.length = 0; // Clear the cart array
+  setLocalStorage("so-cart", cart); // Update local storage
+  updateCartCount(); // Update the cart count display
 }
 
 export function updateBreadcrumb() {
