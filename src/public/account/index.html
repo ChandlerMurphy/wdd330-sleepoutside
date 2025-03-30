@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Create an Account</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/register.mjs" type="module"></script>
+  </head>
+
+  <body>
+    <header id="main-header" class="divider">
+      <div class="container">
+        <a href="/">
+          <img src="/images/tent.png" alt="tent image for logo" />
+          <h1>SleepOutside</h1>
+        </a>
+      </div>
+    </header>
+
+    <main class="divider">
+        <div class="container">
+            <h1>Create an Account</h1>
+            <form id="registrationForm">
+                <div class="accountForm">
+                    <label for="customername">Name:</label>
+                    <input type="text" id="customername" name="customername" required>
+                </div>
+
+                <div class="accountForm">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="accountForm">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <button type="submit" id="register-btn">Register</button>
+            </form>
+        </div>
+    </main>
+
+    <footer id="main-footer">
+      <div class="container">
+        &copy;NOT a real business
+      </div>
+    </footer>
+  </body>
+</html>
